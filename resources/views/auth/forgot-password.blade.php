@@ -31,7 +31,7 @@
                         <div class="d-grid gap-2 mb-28">
                             <button class="btn btn-primary h-5" type="submit">Send reset password link</button>
                         </div>
-                        <p class="text-center priv"><a href="login.html" class="text-decoration-none">Back to Login</a></p>
+                        <p class="text-center priv"><a href="{{ route('login') }}" class="text-decoration-none">Back to Login</a></p>
                     </form>
                     </div>
                 </div>

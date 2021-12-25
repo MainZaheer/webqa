@@ -18,7 +18,7 @@
             </div>
             <div class="dropdown">
             <button class="btn btn-outline-secondary dropdown-toggle rounded-ten" type="button" id="dropdown_menu_button2" data-bs-toggle="dropdown" aria-expanded="false">
-                jhon@example.com
+            {{ auth()->user()->email }}
             </button>
             <ul class="dropdown-menu dropdown-menu dropdown-menu-custom" aria-labelledby="dropdown_menu_button2">
                 <li><a class="dropdown-item active" href="#">Action</a></li>

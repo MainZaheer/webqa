@@ -30,9 +30,9 @@ mix
     )
     .styles(
         [
-            'resources/admin-assets/css/icheck-bootstrap.min.css',
             'resources/admin-assets/css/all.min.css',
             'resources/admin-assets/css/adminlte.min.css',
+            'resources/admin-assets/css/icheck-bootstrap.min.css',
         ],
         'public/css/admin.css'
         )
@@ -45,8 +45,8 @@ mix
     )
     .scripts(
         [
-            'resources/admin-assets/js/bootstrap.bundle.min.js',
             'resources/admin-assets/js/jquery.min.js',
+            'resources/admin-assets/js/bootstrap.bundle.min.js',
             'resources/admin-assets/js/adminlte.min.js',
         ],
         'public/js/admin.js'

@@ -13,9 +13,9 @@
     <div class="row">
         <div class="col-sm-12 col-md">
             <h1 class="text-analyze">Analyze Website Quality, Compliance and Performance</h1>
-            <img src="{{ asset('images/logo.png') }}" class="img-custom d-none d-md-block">
+            <img src="{{ asset('images/register.png') }}" class="img-custom d-none d-md-block">
         </div>
-        <div class="col-sm-12 col-md-auto"></div>
+        <div class="col-sm-12 col-md-auto">
             <div class="card-custom">
                 <div class="card-body-custom">
                     <h5 class="title-custom">Get Your Free Account</h5>
@@ -59,4 +59,5 @@
         </div>
     </div>
 </div>
+
 @endsection

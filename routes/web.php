@@ -27,6 +27,11 @@ Route::namespace("Admin")->prefix('admin')->group(function(){
         Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
         Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
     });
+
+    Route::namespace("Users")->prefix('users')->group(function(){
+        Route::get('/view', [App\Http\Controllers\Admin\Users\UsersController::class, 'view'])->name('admin.users.view');
+        Route::get('/add', [App\Http\Controllers\Admin\Users\UsersController::class, 'add'])->name('admin.users.add');
+    });
   
 });
 
