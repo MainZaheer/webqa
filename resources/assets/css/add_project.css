@@ -1,0 +1,15 @@
+.card-custom-body {
+	padding: 30px 30px 72px 30px;
+}
+.label-custom{
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+.mb-24{
+	margin-bottom: 24px;
+}
