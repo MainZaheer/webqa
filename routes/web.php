@@ -13,16 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [App\Http\Controllers\PagesController::class, 'welcome'])->name('welcome');
 Route::get('privacy-policy', [App\Http\Controllers\PagesController::class, 'privacy'])->name('privacy');
 Route::get('terms-of-service', [App\Http\Controllers\PagesController::class, 'terms'])->name('terms');
+Route::get('dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// admin
+Route::namespace("Admin")->prefix('admin')->group(function(){
+    Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
+    Route::namespace('Auth')->group(function(){
+        Route::get('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
+        Route::post('/login', [App\Http\Controllers\Admin\Auth\LoginController::class, 'login']);
+        Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
+    });
+  
+});
 
 require __DIR__.'/auth.php';

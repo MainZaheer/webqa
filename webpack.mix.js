@@ -24,15 +24,32 @@ mix
         'resources/assets/css/settings.css',
         'resources/assets/css/settings_images.css',
         'resources/assets/css/add_project.css',
+        'resources/assets/css/custom.css',
     ],
     'public/css/app.css'
     )
+    .styles(
+        [
+            'resources/admin-assets/css/icheck-bootstrap.min.css',
+            'resources/admin-assets/css/all.min.css',
+            'resources/admin-assets/css/adminlte.min.css',
+        ],
+        'public/css/admin.css'
+        )
     .scripts(
         [
             'resources/assets/js/bootstrap.bundle.min.js',
             'resources/assets/js/custom.js',
         ],
         'public/js/app.js'
+    )
+    .scripts(
+        [
+            'resources/admin-assets/js/bootstrap.bundle.min.js',
+            'resources/admin-assets/js/jquery.min.js',
+            'resources/admin-assets/js/adminlte.min.js',
+        ],
+        'public/js/admin.js'
     );
 
 

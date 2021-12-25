@@ -1,96 +1,96 @@
 .icon-plus {
 	width: 16px;
 	height: 16px;
-	background-image: url(../icons/plus.svg);
+	background-image: url(/icons/plus.svg);
 }
 
 .icon-home-active {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_home_active.svg);
+	background-image: url(/icons/ic_home_active.svg);
 	background-position: center;
 }
 
 .icon-profile-active {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_profile_active.svg);
+	background-image: url(/icons/ic_profile_active.svg);
 	background-position: center;
 }
 
 .icon-settings-active {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_settings_active.svg);
+	background-image: url(/icons/ic_settings_active.svg);
 	background-position: center;
 }
 
 .icon-home {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_home.svg);
+	background-image: url(/icons/ic_home.svg);
 	background-position: center;
 }
 
 .icon-project-active {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_project_active.svg);
+	background-image: url(/icons/ic_project_active.svg);
 	background-position: center;
 }
 
 .icon-project {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_project.svg);
+	background-image: url(/icons/ic_project.svg);
 	background-position: center;
 }
 
 .icon-profile {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_profile.svg);
+	background-image: url(/icons/ic_profile.svg);
 	background-position: center;
 }
 
 .icon-qa {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_QAPage.svg);
+	background-image: url(/icons/ic_QAPage.svg);
 	background-position: center;
 }
 
 .icon-settings {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_settings.svg);
+	background-image: url(/icons/ic_settings.svg);
 	background-position: center;
 }
 
 .icon-logout {
 	width: 24px;
 	height: 24px;
-	background-image: url(../icons/ic_logout.svg);
+	background-image: url(/icons/ic_logout.svg);
 	background-position: center;
 }
 
 .icon-folder {
 	width: 18px;
 	height: 18px;
-	background-image: url(../icons/ic_folder.svg);
+	background-image: url(/icons/ic_folder.svg);
 	display: inline-block;
 	margin-right: 8px;
 	background-position: center;
 }
 
 .icon-folder:hover {
-	background-image: url(../icons/ic_folder_hover.svg);
+	background-image: url(/icons/ic_folder_hover.svg);
 }
 
 .icon-create {
 	width: 18px;
 	height: 18px;
-	background-image: url(../icons/ic_plus.svg);
+	background-image: url(/icons/ic_plus.svg);
 	display: inline-block;
 	margin-right: 8px;
 	background-position: center;
@@ -99,14 +99,14 @@
 .icon-toggle {
 	width: 16px;
 	height: 16px;
-	background-image: url(../icons/ic_toggle.svg);
+	background-image: url(/icons/ic_toggle.svg);
 	background-repeat: no-repeat;
 }
 
 .icon-check {
 	width: 18px;
 	height: 18px;
-	background-image: url(../icons/check.svg);
+	background-image: url(/icons/check.svg);
 	background-repeat: no-repeat;
 	margin-right: 8px;
 	margin-top: 3px;
@@ -115,7 +115,7 @@
 .icon-x {
 	width: 18px;
 	height: 18px;
-	background-image: url(../icons/x.svg);
+	background-image: url(/icons/x.svg);
 	background-repeat: no-repeat;
 	margin-right: 8px;
 	background-position: center;
@@ -125,7 +125,7 @@
 .icon-warning {
 	width: 18px;
 	height: 18px;
-	background-image: url(../icons/warning.svg);
+	background-image: url(/icons/warning.svg);
 	background-repeat: no-repeat;
 	margin-right: 8px;
 	background-position: center;
@@ -135,7 +135,7 @@
 .icon-info {
 	width: 22px;
 	height: 22px;
-	background-image: url(../icons/info.svg);
+	background-image: url(/icons/info.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -143,7 +143,7 @@
 .icon-setting-black {
 	width: 22px;
 	height: 22px;
-	background-image: url(../icons/setting_black.svg);
+	background-image: url(/icons/setting_black.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -151,7 +151,7 @@
 .icon-trash {
 	width: 22px;
 	height: 22px;
-	background-image: url(../icons/trash.svg);
+	background-image: url(/icons/trash.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 }
@@ -159,7 +159,7 @@
 .excel-icon {
 	width: 30px;
 	height: 30px;
-	background-image: url(../icons/excel-icon.svg);
+	background-image: url(/icons/excel-icon.svg);
 	background-repeat: no-repeat;
 	margin-right: 8px;
 }
@@ -167,7 +167,7 @@
 .pdf-icon {
 	width: 30px;
 	height: 30px;
-	background-image: url(../icons/pdf-icon.png);
+	background-image: url(/icons/pdf-icon.png);
 	background-repeat: no-repeat;
 	margin-right: 8px;
 }
