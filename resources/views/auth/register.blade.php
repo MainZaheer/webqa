@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row my-header">
         <div class="col">
-            <img class="logo" src="{{ asset('images/logo.png') }}">
+        <a href="{{ route('welcome') }}"><img class="logo" src="{{ asset('images/logo.png') }}"></a>
         </div>
         <div class="col-auto">
             <p class="text-phone"><a href="{{ route('login') }}" class="btn btn-login">Login</a></p>

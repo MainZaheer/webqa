@@ -1,48 +1,49 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.guest')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section("content")
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+<div class="container">
+    <div class="row my-header">
+        <div class="col">
+        <a href="{{ route('welcome') }}"><img class="logo" src="{{ asset('images/logo.png') }}"></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-none d-md-block"></div>
+            <div class="col">
+                <div class="card-custom">
+                    <div class="card-body-custom">
+                    @if($errors->has('email'))
+                        <span class="feedback mb-2">{{ $errors->first('email') }}</span>
+                    @endif
+                    <h5 class="card-title-custom">Reset Your Password</h5>
+                    <p class="let">Enter your new password</p>
+                    <form action="{{ route('password.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="email" value="{{ old('email', $request->email) }}">
+                        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                        <div class="mb-24">
+                            <label for="password" class="form-label label-bold">Password</label>
+                            <input type="password" class="form-control h-5 {{ $errors->has('password') ? 'invalid' : ''  }}" name="password" id="password">
+                            @if ($errors->has('password'))
+                                <span class="feedback">{{ $errors->first('password') }}</span>
+                            @endif
+                        </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                        <div class="mb-24">
+                            <label for="password_confirmation" class="form-label label-bold">Confirm Password</label>
+                            <input type="password" class="form-control h-5 {{ $errors->has('password') ? 'invalid' : ''  }}" name="password_confirmation" id="password_confirmation">
+                        </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                        <div class="d-grid gap-2 mb-28">
+                            <button class="btn btn-primary h-5" type="submit">Update Password</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                    type="password"
-                                    name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Reset Password') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        <div class="col  d-none d-md-block"></div>
+    </div>
+</div>
+@endsection

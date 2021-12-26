@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row my-header">
         <div class="col">
-            <img class="logo" src="{{ asset('images/logo.png') }}">
+        <a href="{{ route('welcome') }}"><img class="logo" src="{{ asset('images/logo.png') }}"></a>
         </div>
         <div class="col-auto">
             <p class="mt-2 text-link">Need an account? <a href="{{ route('register') }}" class="text-decoration-none">Sign up</a></p>
@@ -16,6 +16,9 @@
             <div class="col">
                 <div class="card-custom">
                     <div class="card-body-custom">
+                    @if (session('status'))
+                    <span class="feedback text-success mb-2">Your password has been changed successfully, please login with your new password.</span>
+                    @endif
                     <h2 class="title-custom">Login</h2>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
