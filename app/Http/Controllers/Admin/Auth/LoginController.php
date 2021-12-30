@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
+use Session;
 
 class LoginController extends Controller
 {
@@ -33,10 +34,7 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('guest:admin')->except('logout');
-    }
+  
  
     public function showLoginForm(){
         return view('admin.auth.login');
@@ -45,9 +43,18 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email|max:255|unique:admins',
+            'email' => 'required|string|email|max:255',
             'password' => ['required', Rules\Password::defaults()],
         ]);
+
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+            return redirect()->route('admin.home');
+        }else{
+            Session::flash('email', "These credentials do not match our records");
+            Session::flash('password', "");
+            
+            return back()->withInput($request->only('email', 'remember'));
+        }
     }
  
     /**
@@ -58,7 +65,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard()->logout();
+        Auth::guard('admin')->logout();
  
         $request->session()->invalidate();
  
@@ -70,8 +77,5 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function guard()
-    {
-        return Auth::guard('admin');
-    }
+ 
 }

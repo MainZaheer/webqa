@@ -15,7 +15,7 @@
 
         <div class="mb-3">
             <div class="input-group">
-            <input type="email" id="email" name="email" class="form-control {{ $errors->has('email') ? 'invalid' : ''  }}" placeholder="Email" value="{{ old('email') }}">
+            <input type="email" id="email" name="email" class="form-control {{ $errors->has('email') ? 'invalid' : ''  }} {{ Session::has('email') ? 'invalid' : ''  }}" placeholder="Email" value="{{ old('email') }}">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -24,12 +24,16 @@
             </div>
             @if ($errors->has('email'))
                 <span class="feedback">{{ $errors->first('email') }}</span>
+
+            @else
+              @if (Session::has('email'))
+                  <span class="feedback">{{ Session::get('email') }}</span>
+              @endif
             @endif
         </div>
-            
         <div class="mb-3">
             <div class="input-group">
-            <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'invalid' : ''  }}" placeholder="Password">
+            <input type="password" id="password" name="password" class="form-control {{ Session::has('password') ? 'invalid' : ''  }} {{ $errors->has('password') ? 'invalid' : ''  }}" placeholder="Password">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -38,13 +42,19 @@
             </div>
             @if ($errors->has('password'))
                 <span class="feedback">{{ $errors->first('password') }}</span>
+            @else
+
+              @if (Session::has('password'))
+                  <span class="feedback">{{ Session::get('password') }}</span>
+              @endif
+
             @endif
         </div>
 
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} id="remember">
                 <label for="remember">
                     Remember Me
                 </label>
