@@ -15,22 +15,22 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        Admin::truncate(); 
-           $admins = [ 
-            [ 
-              'name' => 'Admin',
-              'email' => 'superadmin@gmail.com',
-              'password' => '12345678',
+        Admin::truncate();
+        $admins = [
+            [
+            'name' => 'Admin',
+            'email' => 'superadmin@gmail.com',
+            'password' => '12345678',
             ],
-          ];
+        ];
 
-          foreach($admins as $admin)
-          {
+        foreach($admins as $admin)
+        {
             Admin::create([
-               'name' => $admin['name'],
-               'email' => $admin['email'],
-               'password' => Hash::make($admin['password'])
-             ]);
-           }
+                'name' => $admin['name'],
+                'email' => $admin['email'],
+                'password' => Hash::make($admin['password'])
+            ]);
+        }
     }
 }

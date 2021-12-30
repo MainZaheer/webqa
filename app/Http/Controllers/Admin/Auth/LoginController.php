@@ -3,79 +3,57 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules;
-use Session;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
- 
- 
     /**
-     * Where to redirect users after login.
+     * Display the login view.
      *
-     * @var string
+     * @return \Illuminate\View\View
      */
-    protected $redirectTo = '/admin';
- 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-  
- 
-    public function showLoginForm(){
+    public function create()
+    {
         return view('admin.auth.login');
     }
 
-    public function login(Request $request)
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(LoginRequest $request)
     {
-        $request->validate([
-            'email' => 'required|string|email|max:255',
-            'password' => ['required', Rules\Password::defaults()],
-        ]);
+        $request->adminAuthenticate();
 
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->route('admin.home');
-        }else{
-            Session::flash('email', "These credentials do not match our records");
-            Session::flash('password', "");
-            
-            return back()->withInput($request->only('email', 'remember'));
-        }
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::ADMIN);
     }
- 
+
     /**
      * Log the user out of the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    public function destroy(Request $request)
     {
         Auth::guard('admin')->logout();
- 
+
         $request->session()->invalidate();
- 
+
         return redirect()->route('admin.login');
     }
-    
+
      /**
      * Get the guard to be used during authentication.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
- 
+
 }

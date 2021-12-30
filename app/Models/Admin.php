@@ -9,10 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
-    protected $table = "admins";
-    protected $guard = "admin";
- 
+    use HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +18,7 @@ class Admin extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'user_type'
     ];
- 
+
     /**
      * The attributes that should be hidden for arrays.
      *
