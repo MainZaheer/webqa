@@ -31,7 +31,7 @@ Route::namespace("Admin")->prefix('control')->group(function(){
         Route::post('logout', [App\Http\Controllers\Admin\Auth\LoginController::class, 'destroy'])->name('admin.logout');
     });
 
-    Route::middleware('auth:admin')->group(function () {
+    Route::middleware('admin')->group(function () {
         Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 
         Route::namespace("Users")->prefix('admin/users')->group(function(){
