@@ -36,22 +36,17 @@
                                     <p>View All Users</p></p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.users.add') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add User</p></p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                    
+                    <li class="nav-item">
+                        <a class="dropdown-item nav-link" href="{{ route('admin.logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
                             {{ __('Logout') }}
                         </a>
-
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

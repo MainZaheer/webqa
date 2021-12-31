@@ -36,7 +36,6 @@ Route::namespace("Admin")->prefix('control')->group(function(){
 
         Route::namespace("Users")->prefix('admin/users')->group(function(){
             Route::get('/', [App\Http\Controllers\Admin\Users\UsersController::class, 'view'])->name('admin.users.view');
-            Route::get('/add', [App\Http\Controllers\Admin\Users\UsersController::class, 'add'])->name('admin.users.add');
         });
     });
 });
