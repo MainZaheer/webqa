@@ -12,4 +12,10 @@ class UsersController extends Controller
         $users = User::all();
         return view("admin.users.view", compact("users"));
     }
+
+
+    public function delete($id){
+        User::where('id',$id)->delete();
+        return redirect()->back()->with("success", "User Deleted Successfully");
+    }
 }

@@ -27,6 +27,7 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">Users</h3>
+          @include("admin.components.message")
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -82,19 +83,23 @@
                           Email
                       </td>
                       <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                          <span class="badge badge-success">Active</span>
                       </td>
                       <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
-                              <i class="fas fa-folder">
-                              </i>
-                              View
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="#">
-                              <i class="fas fa-trash">
-                              </i>
-                              Delete
-                          </a>
+                          <form style="display: none" action="{{ route('admin.user.destroy',$user->id ) }}" method="post" id="del-form-{{ $user->id }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                            </form>
+                            <a class="btn btn-danger btn-sm" onclick="
+                                 if (confirm('Are You Sure to delete user {{ $user->name }}?')){
+                                     event.preventDefault();
+                                     document.getElementById('del-form-{{ $user->id }}').submit();
+                                 }else {
+                                     event.preventDefault();
+                                 }">
+                                 <i class="fas fa-trash"></i>
+                                Delete
+                            </a>
                       </td>
                   </tr>
                   @endforeach
