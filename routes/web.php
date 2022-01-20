@@ -36,6 +36,7 @@ Route::namespace("Admin")->prefix('control')->group(function(){
 
         Route::namespace("Users")->prefix('admin/users')->group(function(){
             Route::get('/', [App\Http\Controllers\Admin\Users\UsersController::class, 'view'])->name('admin.users.view');
+            Route::post('/search', [App\Http\Controllers\Admin\Users\UsersController::class, 'search'])->name('admin.users.search');
             Route::delete('/delete/{id}', [App\Http\Controllers\Admin\Users\UsersController::class, 'delete'])->name('admin.user.destroy');
         });
     });

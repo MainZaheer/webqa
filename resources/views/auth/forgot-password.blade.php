@@ -8,7 +8,7 @@
             <a href="{{ route('welcome') }}"><img class="logo" src="{{ asset('images/logo.png') }}"></a>
         </div>
         <div class="col-auto">
-          <p class="mt-2 text-link">Need an account? <a href="register.html" class="text-decoration-none">Sign up</a></p>
+          <p class="mt-2 text-link">Need an account? <a href="{{ route('register') }}" class="text-decoration-none">Sign up</a></p>
         </div>
     </div>
     <div class="row">

@@ -22,11 +22,28 @@
 
     <!-- Main content -->
     <section class="content">
-
+          <div class="row mb-2">
+              <div class="col-md-6">
+                  <form action="">
+                      <div class="input-group">
+                          <input id="search" type="search" class="form-control form-control-lg" placeholder="Search user">
+                          <div class="input-group-append">
+                              <button type="submit" class="btn btn-lg btn-default">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Users</h3>
+          <div class="row">
+            <div class="col-md-12">
+            <h3 class="card-title">Users</h3>
+            </div>
+          </div>
           @include("admin.components.message")
 
           <div class="card-tools">
@@ -62,7 +79,7 @@
                   </tr>
               </thead>
               <tbody>
-                @foreach($users as $user)
+              @foreach($users as $user)
                 <tr>
                       <td>
                           #
@@ -113,4 +130,88 @@
     </section>
     <!-- /.content -->
 
- @endsection
+@section("js")
+
+<script>
+document.addEventListener("DOMContentLoaded", (e)=>{
+    $('#search').on('keyup', function(){
+        search();
+    });
+    search();
+
+
+
+    function search(){
+        var keyword = $('#search').val();
+        $.post('{{ route("admin.users.search") }}',
+          {
+            _token: $('meta[name="csrf-token"]').attr('content'),
+            keyword:keyword
+          },
+          function(data){
+            postDataTable(data);
+          });
+    }
+
+
+
+    // table row with ajax
+    function postDataTable(res){
+      let htmlView = '';
+      if(res.employees.length <= 0){
+          htmlView+= `
+            <tr>
+                <td colspan="6">No users found.</td>
+            </tr>`;
+      }
+      for(let i = 0; i < res.employees.length; i++){
+          htmlView += `<tr>
+                      <td>
+                          #
+                      </td>
+                      <td>
+                          <a href="#">
+                            ${res.employees[i].name}
+                          </a>
+                          <br/>
+                          <small>
+                              Created ${res.employees[i].created_at}
+                          </small>
+                      </td>
+                      <td>
+                          <a href="mailto:${res.employees[i].email}">${res.employees[i].email}</a>
+                      </td>
+                      <td>
+                          Email
+                      </td>
+                      <td class="project-state">
+                          <span class="badge badge-success">Active</span>
+                      </td>
+                      <td class="project-actions text-right">
+                            <form style="display: none" action="/control/admin/users/delete/${res.employees[i].id}" method="post" id="del-form-${res.employees[i].id}">
+                            {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                            </form>
+                            <a class="btn btn-danger btn-sm" onclick="
+                                 if (confirm('Are You Sure to delete user ${res.employees[i].name}?')){
+                                     event.preventDefault();
+                                     document.getElementById('del-form-${res.employees[i].id}').submit();
+                                 }else {
+                                     event.preventDefault();
+                                 }">
+                                 <i class="fas fa-trash"></i>
+                                Delete
+                            </a>
+                      </td>
+                      </tr>
+          `;
+      }
+          $('tbody').html(htmlView);
+    }
+})
+</script>
+
+
+@endsection
+
+@endsection
