@@ -20,6 +20,7 @@ Route::get('terms-of-service', [App\Http\Controllers\PagesController::class, 'te
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
+    Route::resource('profile', App\Http\Controllers\ProfileController::class);
 });
 
 

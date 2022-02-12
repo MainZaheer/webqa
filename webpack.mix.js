@@ -39,7 +39,9 @@ mix
     .scripts(
         [
             'resources/assets/js/bootstrap.bundle.min.js',
+            'resources/assets/js/jquery-3.6.0.min.js',
             'resources/assets/js/custom.js',
+            'resources/assets/js/profile.js',
         ],
         'public/js/app.js'
     )
