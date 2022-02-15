@@ -19,8 +19,17 @@ Route::get('terms-of-service', [App\Http\Controllers\PagesController::class, 'te
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
-    Route::resource('profile', App\Http\Controllers\ProfileController::class);
+    Route::middleware('onboarding')->group(function () {
+        Route::get('dashboard', [App\Http\Controllers\PagesController::class, 'dashboard'])->name('dashboard');
+        Route::resource('profile', App\Http\Controllers\ProfileController::class);
+        Route::resource('settings', App\Http\Controllers\SettingsController::class);
+    });
+
+    Route::resource('projects', App\Http\Controllers\ProjectsController::class);
+
+    Route::middleware('onboardingexists')->group(function () {
+        Route::get('onboarding', [App\Http\Controllers\PagesController::class, 'onboarding'])->name('onboarding');
+    });
 });
 
 
