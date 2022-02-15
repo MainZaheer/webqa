@@ -31,16 +31,7 @@ class CreateProjectSettingsTable extends Migration
             $table->boolean("favicon")->default(0);
             $table->boolean("xml_sitemap")->default(0);
             $table->boolean("html_sitemap")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
-            $table->boolean("meta_title")->default(0);
+            $table->boolean("images")->default(0);
         });
     }
 

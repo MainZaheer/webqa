@@ -15,7 +15,7 @@ class CreateProjectSettingsSubTable extends Migration
     {
         Schema::create('project_settings_sub', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer("settings_id");
         });
     }
 
